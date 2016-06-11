@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: WooCommerce All Countries Counties
+Plugin Name: All Countries Counties For WooCommerce
 Plugin URI: https://github.com/hoshomoh/WooCommerce-All-Country-States
-Description: A plugin that adds postal counties to WooCommerce's list of states.
+Description: A Wordpress WooCommerce Plugin that add counties/provinces/states for WooCommerce Countries
 Version: 1.0.0
 Author: Oforomeh Oshomo
 Author URI: http://hoshomoh.github.io/
