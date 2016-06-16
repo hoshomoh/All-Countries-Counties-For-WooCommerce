@@ -41,6 +41,8 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
         /**
          * Construct the plugin.
          */
+        public $error = null;
+
         public function __construct() {
             add_action( 'plugins_loaded', array( $this, 'init' ) );
         }
@@ -54,10 +56,18 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
               add_filter( 'woocommerce_states', array( $this, 'wc_add_counties' ) );
             } else {
                 // throw an admin error if you like
+                $this->showError( __( 'All Countries Counties For WooCommerce is enabled but not effective. It requires WooCommerce in order to work. Kindly Install/Activate WooCommerce.',
+                'all-countries-counties-for-wc' ) );
+
+                return false;
             }
         }
 
-        public function  wc_add_counties( $states ) {
+        /**
+         * @param $states
+         * @return mixed
+         */
+        public function  wc_add_counties($states ) {
             $allowed_countries = $this->get_store_allowed_countries();
             if ( ! empty( $allowed_countries ) ) {
                 foreach ($allowed_countries as $code => $country) {
@@ -70,13 +80,50 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
             return $states;
         }
 
+        /**
+         * @return array
+         */
         public function get_store_allowed_countries() {
             $allowed_countries = new WC_Countries();
             return array_merge( $allowed_countries->get_allowed_countries(), $allowed_countries->get_shipping_countries() );
         }
 
+        /**
+         * @return mixed
+         */
         public function plugin_path() {
             return untrailingslashit( plugin_dir_path( __FILE__ ) );
+        }
+
+        /**
+         * Output notice
+         *
+         * @param string $message
+         * @param bool $success
+         */
+        public function outputNotice( $message, $success = true ) {
+            echo '
+                <div class="' . ( $success ? 'updated' : 'error' ) . '" style="position: relative;">
+                    <p>' . $message . '</p>
+                </div>
+            ';
+        }
+
+        /**
+         * Show error
+         *
+         * @param string $error
+         */
+        public function showError( $error ) {
+            $this->error = $error;
+            add_action( 'admin_notices', array( &$this, 'outputLastError' ) );
+        }
+
+        /**
+         * Output last error
+         */
+        function outputLastError() {
+            $this->outputNotice( $this->error, false );
         }
 
     }
