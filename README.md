@@ -4,7 +4,7 @@ Donate link: https://github.com/hoshomoh/WooCommerce-All-Country-States <Just st
 Tags: e-commerce, woocommerce-counties, woocommerce-nigerian-states, woocommerce-uk-provinces, woocommerce-chile-counties, woocommerce-kenya-pronvinces
 Requires at least: 4.1
 Tested up to: 4.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,14 @@ A Wordpress WooCommerce Plugin that add counties/provinces/states for WooCommerc
 
 == Description ==
 
-All Countries Counties For WooCommerce is a plugin that automatically pre-populate your WooCommerce state fields to allows customers select from preconfigured states rather than typing it in manually
+All Countries Counties For WooCommerce is a plugin that automatically pre-populate your WooCommerce state fields to allows customers select from preconfigured states rather than typing it in manually.
+
+= Supported Countries =
+
+* United Kingdom
+* Nigeria
+* Chile
+* Kenya
 
 == Installation ==
 
