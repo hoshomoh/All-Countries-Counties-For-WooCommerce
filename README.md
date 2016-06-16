@@ -52,13 +52,13 @@ Yes you can! Join in on our [GitHub repository](https://github.com/hoshomoh/WooC
 
 == Changelog ==
 
-= 1.0.0 - 11/06/2016 =
-* Feature - Added states for Nigeria and United Kingdom
-
 = 1.0.1 - 16/06/2016 =
 * Feature - Added Chile provinces
 * Feature - Added Kenya Counties
-* Fix - Displayed Admin Notice when WooComerce is not installed or Activated
+* Fix - Displayed Admin Notice when WooCommerce is not installed or Activated
+
+= 1.0.0 - 11/06/2016 =
+* Feature - Added states for Nigeria and United Kingdom
 
 == Upgrade Notice ==
 This is the initial release of the plugin. Install and enjoy.
