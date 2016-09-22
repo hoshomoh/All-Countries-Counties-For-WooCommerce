@@ -8,5 +8,11 @@
 
 $local_governments ['NG']['FC' ] =
     [
-        '' => __( 'Select an option...' , 'woocommerce' )
+        '' => __( 'Select an option...' , 'woocommerce' ),
+        'Abuja Municipal' => __( 'Abuja Municipal', 'woocommerce' ),
+        'Bwari' => __( 'Bwari', 'woocommerce' ),
+        'Kuje' => __( 'Kuje', 'woocommerce' ),
+        'Gwagwalada' => __( 'Gwagwalada', 'woocommerce' ),
+        'Kwali' => __( 'Kwali', 'woocommerce' ),
+        'Abaji' => __( 'Abaji', 'woocommerce' )
     ];

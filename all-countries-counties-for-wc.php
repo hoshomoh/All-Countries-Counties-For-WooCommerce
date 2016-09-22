@@ -56,6 +56,7 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
               add_filter( 'woocommerce_states', array( $this, 'wc_add_counties' ) );
               if ( ! empty( $this->get_countries_with_local_government() ) ) {
                   add_filter('woocommerce_checkout_fields', array($this, 'wc_add_local_government_fields'));
+                  add_action( 'wp_enqueue_scripts', array($this, 'wc_local_government_checkout_field_enqueue_script'));
                   add_action('woocommerce_checkout_process', array($this, 'wc_process_local_government_fields'));
                   add_action( 'woocommerce_checkout_update_order_meta', array($this, 'wc_save_local_government_fields'));
                   add_action( 'woocommerce_admin_order_data_after_billing_address', array($this, 'wc_billing_local_government_checkout_field_display_admin_order_meta'), 10, 1 );
@@ -139,53 +140,6 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
                 )
             );
 
-            echo '<script type="text/javascript">' .
-                '/* <![CDATA[ */' .
-                    'var local_government_for_states_country = ' . json_encode($this->wc_add_counties_local_government()) . ';' .
-                '/* ]]> */' .
-                'var country_with_local_governments = ' . json_encode(array_keys($this->get_countries_with_local_government())) . ';' .
-                'var billing_select = jQuery("select#billing_local_government");' .
-                'var billing_field = jQuery("#billing_local_government_field");' .
-                'var shipping_select = jQuery("select#shipping_local_government");' .
-                'var shipping_field = jQuery("#shipping_local_government_field");' .
-                'function update_select(selected_country, selected_state, select, field, default_value) {' .
-                    'if (selected_country != "" && selected_state != "" && jQuery.inArray( selected_country, country_with_local_governments ) >= 0 && typeof local_government_for_states_country[selected_country][selected_state] != "undefined") {' .
-                        'select.empty();' .
-                        'jQuery.each(local_government_for_states_country[selected_country][selected_state], function(key,value) {' .
-                            'select.append(jQuery("<option></option>").attr("value", value).text(value));' .
-                        '});' .
-                        'if(default_value) {' .
-                            'select.val(default_value);' .
-                        '}' .
-                        'select.trigger("change.select2");' .
-                        'select.trigger("chosen:updated");' .
-                        'field.show();' .
-                    '}' .
-                    'else {' .
-                        'select.empty();' .
-                        'select.trigger("change.select2");' .
-                        'select.trigger("chosen:updated");' .
-                        'field.hide();' .
-                    '}' .
-                '}' .
-                'if(jQuery("select#billing_state").val() != "") {' .
-                    'update_select(jQuery("select#billing_country").val(), jQuery("select#billing_state").val(), billing_select, billing_field, "")' .
-                '}' .
-                'if(jQuery("select#shipping_state").val() != "") {' .
-                    'update_select(jQuery("select#shipping_country").val(), jQuery("select#shipping_state").val(), shipping_select, shipping_field, "")' .
-                '}' .
-                'jQuery("select#billing_state").on("change", function(){' .
-                    'var billing_selected_country = jQuery("select#billing_country").val();' .
-                    'var billing_selected_state = jQuery("select#billing_state").val();' .
-                    'update_select(billing_selected_country, billing_selected_state, billing_select, billing_field)' .
-                '});' .
-                'jQuery("select#shipping_state").on("change", function(){' .
-                    'var shipping_selected_country = jQuery("select#shipping_country").val();' .
-                    'var shipping_selected_state = jQuery("select#shipping_state").val();' .
-                    'update_select(shipping_selected_country, shipping_selected_state, shipping_select, shipping_field)' .
-                '});' .
-            '</script>';
-
             return $fields;
         }
 
@@ -198,7 +152,7 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
                     wc_add_notice(__('Billing Local Government is a required field.'), 'error');
                 }
 
-                if ($_POST['ship_to_different_address'] == 1 &&!$_POST['shipping_local_government']) {
+                if ($_POST['ship_to_different_address'] == 1 && !$_POST['shipping_local_government']) {
                     wc_add_notice(__('Shipping Local Government is a required field.'), 'error');
                 }
             }
@@ -254,6 +208,16 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
          */
         public function get_countries_with_local_government() {
             return ['NG' => 'Nigeria'];
+        }
+
+        public function wc_local_government_checkout_field_enqueue_script() {
+            wp_register_script('checkout-fields-js', plugins_url( 'public/js/checkout-fields.js', __FILE__ ), array ('jquery-core'), false, true);
+            $checkout_fields_data = array(
+                'local_government_for_states_country' => json_encode($this->wc_add_counties_local_government()),
+                'country_with_local_governments' => json_encode(array_keys($this->get_countries_with_local_government()))
+            );
+            wp_localize_script( 'checkout-fields-js', 'checkout_fields_data', $checkout_fields_data );
+            wp_enqueue_script('checkout-fields-js');
         }
 
         /**
