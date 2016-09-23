@@ -8,5 +8,5 @@
 
 $local_governments ['NG']['GO' ] =
     [
-        '' => __( 'Select an option...' , 'woocommerce' )
+        '' => __( 'Select an option...' , 'woocommerce' ),
     ];
