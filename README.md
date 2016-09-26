@@ -1,10 +1,10 @@
 === All Countries Counties For WooCommerce ===
 Contributors: hoshomoh
 Donate link: https://github.com/hoshomoh/WooCommerce-All-Country-States <Just star the repo>
-Tags: e-commerce, woocommerce-counties, woocommerce-nigerian-states, woocommerce-uk-provinces, woocommerce-chile-counties, woocommerce-kenya-pronvinces
+Tags: e-commerce, woocommerce-counties, woocommerce-nigerian-states, woocommerce-uk-provinces, woocommerce-chile-counties, woocommerce-kenya-pronvinces, woocommerce-nigerian-LGA
 Requires at least: 4.1
-Tested up to: 4.4
-Stable tag: 1.0.1
+Tested up to: 4.6
+Stable tag: 1.0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -13,6 +13,8 @@ A Wordpress WooCommerce Plugin that add counties/provinces/states for WooCommerc
 == Description ==
 
 All Countries Counties For WooCommerce is a plugin that automatically pre-populate your WooCommerce state fields to allows customers select from preconfigured states rather than typing it in manually.
+It also have support for local governments. So, countries whose states have local government would automatically have a local government dropdown field on checkout page.
+The local government feauture is only available in Nigeria at the moment.
 
 = Supported Countries =
 
@@ -47,7 +49,7 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 = Where can I report bugs to the project? =
 
-Bugs can be reported on [GitHub repository](https://github.com/hoshomoh/WooCommerce-All-Country-States/issues).
+Bugs can be reported on our [GitHub repository](https://github.com/hoshomoh/WooCommerce-All-Country-States/issues).
 
 =All Countries Counties For WooCommerce is awesome! Can I contribute? =
 
@@ -58,6 +60,11 @@ Yes you can! Join in on our [GitHub repository](https://github.com/hoshomoh/WooC
 1. The WooCommerce state field converted to a dropdown.
 
 == Changelog ==
+
+= 1.0.2 - 24/09/2016 =
+* Feature - Added Support for Local Government
+* Feature - Added Local Government for Nigerian States
+* Feature - Added Local Government field to checkout for Nigeria
 
 = 1.0.1 - 16/06/2016 =
 * Feature - Added Chile provinces
