@@ -120,7 +120,7 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
                 'label'     => __('Local Government', 'woocommerce'),
                 'placeholder'   => _x('Local Government', 'placeholder', 'woocommerce'),
                 'required'  => false,
-                'class'     => array('form-row-wide'),
+                'class'     => array('form-row-wide', 'update_totals_on_change'),
                 'clear'     => true,
                 'type'        => 'select',
                 'options'     => array(
@@ -132,7 +132,7 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
                 'label'     => __('Local Government', 'woocommerce'),
                 'placeholder'   => _x('Local Government', 'placeholder', 'woocommerce'),
                 'required'  => false,
-                'class'     => array('form-row-wide'),
+                'class'     => array('form-row-wide', 'update_totals_on_change'),
                 'clear'     => true,
                 'type'        => 'select',
                 'options'     => array(
