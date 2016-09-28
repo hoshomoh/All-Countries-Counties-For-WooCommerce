@@ -41,7 +41,7 @@ In the search field type WooCommerce All Country States and click Search Plugins
 
 = Manual installation =
 
-The manual installation method involves [downloading the latest version our plugin](https://github.com/hoshomoh/KOS-Shipping-Method-for-Woocommerce/releases) and uploading it to your WebServer via your Favourite FTP application. The WordPress codex contains [instructions on how to do this here](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
+The manual installation method involves [downloading the latest version our plugin](https://github.com/hoshomoh/WooCommerce-All-Country-States/releases) and uploading it to your WebServer via your Favourite FTP application. The WordPress codex contains [instructions on how to do this here](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
 
 = Updating =
 
