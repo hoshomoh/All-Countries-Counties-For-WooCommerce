@@ -92,7 +92,7 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
          * @param $local_governments
          * @return mixed
          */
-        public function  wc_add_counties_local_government($local_governments) {
+        public function  wc_add_counties_local_government($local_governments=[]) {
             $countries_with_local_government = $this->get_countries_with_local_government();
             $countries = new WC_Countries();
             if ( ! empty( $countries_with_local_government ) ) {

@@ -65,6 +65,7 @@ Yes you can! Join in on our [GitHub repository](https://github.com/hoshomoh/WooC
 
 = 1.0.4 - 24/09/2016 =
 * Feature - Added Support for re-calculating shipping fee when local government custom field(s) changes
+* Fix - Fix issue [#1](https://github.com/hoshomoh/All-Countries-Counties-For-WooCommerce/issues/1)
 
 = 1.0.3 - 24/09/2016 =
 * Fix - Added Mixing files
