@@ -225,6 +225,9 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
             return ['NG' => 'Nigeria'];
         }
 
+        /**
+         * Enqueue Plugin Script
+         */
         public function wc_local_government_checkout_field_enqueue_script() {
             wp_register_script('checkout-fields-js', plugins_url( 'public/js/checkout-fields.js', __FILE__ ), array ('jquery-core'), false, true);
             $checkout_fields_data = array(
