@@ -1,10 +1,10 @@
 === All Countries Counties For WooCommerce ===
-Contributors: hoshomoh
+Contributors: hoshomoh, rodmontgt
 Donate link: https://github.com/hoshomoh/WooCommerce-All-Country-States <Just star the repo>
 Tags: e-commerce, woocommerce-counties, woocommerce-nigerian-states, woocommerce-uk-provinces, woocommerce-chile-counties, woocommerce-kenya-pronvinces, woocommerce-nigerian-LGA
 Requires at least: 4.1
-Tested up to: 4.6
-Stable tag: 1.0.5
+Tested up to: 4.7
+Stable tag: 1.0.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -24,6 +24,7 @@ The local government feauture is only available in Nigeria at the moment.
 * Nigeria
 * Chile
 * Kenya
+* Guatemala
 
 == Installation ==
 
@@ -62,6 +63,9 @@ Yes you can! Join in on our [GitHub repository](https://github.com/hoshomoh/WooC
 1. The WooCommerce state field converted to a dropdown.
 
 == Changelog ==
+
+= 1.0.6 - 07/12/2016 =
+* Feature - Added Guatemala Departments
 
 = 1.0.5 - 29/09/2016 =
 * Feature - Added local government to package destination
