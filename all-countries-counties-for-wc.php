@@ -108,7 +108,7 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
                 }
             }
 
-            return $local_governments;
+            return apply_filters( 'wc_add_counties_local_government', $local_governments );
         }
 
         /**
@@ -141,7 +141,7 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
                 )
             );
 
-            return $fields;
+            return apply_filters( 'wc_add_local_government_fields', $fields );
         }
 
         /**
