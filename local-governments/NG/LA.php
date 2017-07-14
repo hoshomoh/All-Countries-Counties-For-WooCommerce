@@ -14,7 +14,8 @@ $local_governments ['NG']['LA' ] =
         'Alimosho' => __( 'Alimosho', 'woocommerce' ),
         'Amuwo Odofin' => __( 'Amuwo Odofin', 'woocommerce' ),
         'Apapa' => __( 'Apapa', 'woocommerce' ),
-        'Epe' => __( 'Epe', 'woocommerce' ),
+        '*Badagry' => __( 'Badagry', 'woocommerce' ),
+        '*Epe' => __( 'Epe', 'woocommerce' ),
         'Eti Osa' => __( 'Eti Osa', 'woocommerce' ),
         'Ibeju/lekki' => __( 'Ibeju/lekki', 'woocommerce' ),
         'Ifako Ijaiye' => __( 'Ifako Ijaiye', 'woocommerce' ),
@@ -28,5 +29,4 @@ $local_governments ['NG']['LA' ] =
         'Oshodi/isolo' => __( 'Oshodi/isolo', 'woocommerce' ),
         'Shomolu' => __( 'Shomolu', 'woocommerce' ),
         'Surulere' => __( 'Surulere', 'woocommerce' ),
-        'Badagry' => __( 'Badagry', 'woocommerce' )
     ];

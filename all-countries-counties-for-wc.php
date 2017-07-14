@@ -62,6 +62,7 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
                     add_action( 'woocommerce_admin_order_data_after_billing_address', array($this, 'wc_billing_local_government_checkout_field_display_admin_order_meta'), 10, 1 );
                     add_action( 'woocommerce_admin_order_data_after_shipping_address', array($this, 'wc_shipping_local_government_checkout_field_display_admin_order_meta'), 10, 1 );
                     add_filter( 'woocommerce_cart_shipping_packages', array($this,'wc_add_local_government_to_cart_shipping_packages') );
+                    add_filter( 'woocommerce_checkout_update_customer_data', array( $this, 'wc_update_customer_data' ) );
                 }
             } else {
                 // throw an admin error if you like
@@ -108,7 +109,7 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
                 }
             }
 
-            return $local_governments;
+            return apply_filters( 'wc_add_counties_local_government', $local_governments );
         }
 
         /**
@@ -141,7 +142,7 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
                 )
             );
 
-            return $fields;
+            return apply_filters( 'wc_add_local_government_fields', $fields );
         }
 
         /**
@@ -174,6 +175,29 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
                     update_post_meta( $order_id, 'Shipping Local Government', sanitize_text_field( $_POST['billing_local_government'] ) );
                 }
             }
+        }
+
+        /**
+         * Callback to update logged in customer's data
+         * Hooks to 'woocommerce_checkout_update_customer_data' filter
+         *
+         * @param  bool $should_update
+         * @param  object $checkout
+         */
+        public function wc_update_customer_data($should_update, $checkout) {
+            if ( ! empty( $_POST['billing_local_government'] ) ) {
+                $this->_update_customer( 'billing_local_government', sanitize_text_field( $_POST['billing_local_government'] ) );
+            }
+
+            if ( ! empty( $_POST['shipping_local_government'] ) ) {
+                $this->_update_customer( 'shipping_local_government', sanitize_text_field( $_POST['shipping_local_government'] ) );
+            }else {
+                if ( ! empty( $_POST['billing_local_government'] ) ) {
+                    $this->_update_customer( 'billing_local_government', sanitize_text_field( $_POST['billing_local_government'] ) );
+                }
+            }
+
+            return $should_update;
         }
 
         /**
@@ -274,6 +298,18 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
          */
         public function outputLastError() {
             $this->outputNotice( $this->error, false );
+        }
+
+        /**
+         * Update logged in customer's data
+         *
+         * @param  string   $meta_key   Key of the data to add
+         * @param  mixed    $meta_value      Value to be added
+         */
+        private function _update_customer($meta_key, $meta_value) {
+            if ( $checkout->customer_id ) {
+                WC()->customer[ $meta_key ] = $meta_value;
+            }
         }
 
     }
