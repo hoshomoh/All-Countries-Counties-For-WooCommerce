@@ -29,5 +29,5 @@ $states ['GT' ] =
     'GTSO' => __( 'Sololá', 'woocommerce' ),
     'GTSU' => __( 'Suchitepéquez', 'woocommerce' ),
     'GTTO' => __( 'Totonicapán', 'woocommerce' ),
-    'GTZA' => __( 'Zapaca', 'woocommerce' )
+    'GTZA' => __( 'Zacapa', 'woocommerce' )
   ];
