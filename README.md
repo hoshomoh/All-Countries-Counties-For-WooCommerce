@@ -28,7 +28,7 @@ The local government feauture is only available in Nigeria at the moment.
 
 = Overriding local governments in theme function.php
 
-```php
+`
 add_filter( 'wc_add_counties_local_government', 'my_custom_lga' );
 
 function my_custom_lga( $local_governments ) { 
@@ -45,7 +45,7 @@ function my_custom_lga( $local_governments ) {
 
 	return $local_governments;
 }
-```
+`
 
 == Installation ==
 
@@ -103,3 +103,8 @@ Yes you can! Join in on our [GitHub repository](https://github.com/hoshomoh/WooC
 * Feature - Added Kenya Counties
 * Fix - Displayed Admin Notice when WooCommerce is not installed or Activated
 * Feature - Added states for Nigeria and United Kingdom
+
+== Upgrade Notice ==
+
+= 1.1.0 =
+* Added Feature to override local governments collection in theme function.php file.
