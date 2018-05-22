@@ -181,19 +181,20 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
          * Callback to update logged in customer's data
          * Hooks to 'woocommerce_checkout_update_customer_data' filter
          *
-         * @param  bool $should_update
-         * @param  object $checkout
+         * @param bool $should_update
+         * @param object $checkout
+         * @return bool
          */
         public function wc_update_customer_data($should_update, $checkout) {
             if ( ! empty( $_POST['billing_local_government'] ) ) {
-                $this->_update_customer( 'billing_local_government', sanitize_text_field( $_POST['billing_local_government'] ) );
+                $this->updateCustomerData($checkout, 'billing_local_government', sanitize_text_field( $_POST['billing_local_government'] ) );
             }
 
             if ( ! empty( $_POST['shipping_local_government'] ) ) {
-                $this->_update_customer( 'shipping_local_government', sanitize_text_field( $_POST['shipping_local_government'] ) );
+                $this->updateCustomerData($checkout, 'shipping_local_government', sanitize_text_field( $_POST['shipping_local_government'] ) );
             }else {
                 if ( ! empty( $_POST['billing_local_government'] ) ) {
-                    $this->_update_customer( 'billing_local_government', sanitize_text_field( $_POST['billing_local_government'] ) );
+                    $this->updateCustomerData($checkout, 'billing_local_government', sanitize_text_field( $_POST['billing_local_government'] ) );
                 }
             }
 
@@ -303,10 +304,11 @@ if ( ! class_exists( 'WC_All_Country_Counties' ) ) :
         /**
          * Update logged in customer's data
          *
-         * @param  string   $meta_key   Key of the data to add
-         * @param  mixed    $meta_value      Value to be added
+         * @param $checkout
+         * @param $meta_key
+         * @param $meta_value
          */
-        private function _update_customer($meta_key, $meta_value) {
+        private function updateCustomerData($checkout, $meta_key, $meta_value) {
             if ( $checkout->customer_id ) {
                 WC()->customer[ $meta_key ] = $meta_value;
             }

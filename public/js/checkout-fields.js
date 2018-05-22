@@ -2,58 +2,106 @@
  * Created by oshomo.oforomeh on 22/09/2016.
  */
 
-var country_with_local_governments = JSON.parse(checkout_fields_data.country_with_local_governments);
-var local_government_for_states_country = JSON.parse(checkout_fields_data.local_government_for_states_country);
+var countryWithLocalGovernments = JSON.parse(checkout_fields_data.country_with_local_governments);
+var localGovernmentForStatesCountry = JSON.parse(checkout_fields_data.local_government_for_states_country);
 var isCart = location.pathname.indexOf('cart') > -1;
-var billing_select = "select#billing_local_government";
-var billing_field = "#billing_local_government_field";
-var shipping_select = "select#shipping_local_government";
-var shipping_field = "#shipping_local_government_field";
-var billing_country = "select#billing_country";
-var billing_state = "select#billing_state";
-var shipping_country = isCart ? "select#calc_shipping_country" : "select#shipping_country";
-var shipping_state = isCart ? "select#calc_shipping_state" : "select#shipping_state";
+var billingSelect = "select#billing_local_government";
+var billingField = "#billing_local_government_field";
+var shippingSelect = "select#shipping_local_government";
+var shippingField = "#shipping_local_government_field";
+var billingCountry = "select#billing_country";
+var billingState = "select#billing_state";
+var shippingCountry = isCart ? "select#calc_shipping_country" : "select#shipping_country";
+var shippingState = isCart ? "select#calc_shipping_state" : "select#shipping_state";
 
-function update_select(selected_country, selected_state, select_selector, field_selector, default_value) {
-    var select = jQuery(select_selector);
-    var field = jQuery(field_selector);
+/**
+ * Update the local government select field based on selected state
+ * @param selectedCountry
+ * @param selectedState
+ * @param selectSelector
+ * @param fieldSelector
+ * @param defaultValue
+ */
+function updateSelectField(selectedCountry, selectedState, selectSelector, fieldSelector, defaultValue) {
+  var select = jQuery(selectSelector);
+  var field = jQuery(fieldSelector);
 
-    if (selected_country != "" && selected_state != "" && jQuery.inArray( selected_country, country_with_local_governments ) >= 0 && typeof local_government_for_states_country[selected_country][selected_state] != "undefined") {
-        select.empty();
-        jQuery.each(local_government_for_states_country[selected_country][selected_state], function(key,value) {
-            select.append(jQuery("<option></option>").attr("value", key).text(value));
-        });
-        if(default_value) {
-            select.val(default_value);
-        }
-        select.trigger("change.select2");
-        select.trigger("chosen:updated");
-        field.show();
+  if (
+    selectedCountry !== "" &&
+    selectedState !== "" &&
+    jQuery.inArray(selectedCountry, countryWithLocalGovernments) >= 0 &&
+    typeof localGovernmentForStatesCountry[selectedCountry][selectedState] !== "undefined"
+  ) {
+    select.empty();
+    jQuery.each(localGovernmentForStatesCountry[selectedCountry][selectedState], function (key, value) {
+      select.append(jQuery("<option></option>").attr("value", key).text(value));
+    });
+
+    if (defaultValue) {
+      select.val(defaultValue);
     }
-    else {
-        select.empty();
-        select.trigger("change.select2");
-        select.trigger("chosen:updated");
-        field.hide();
-    }
+
+    select.trigger("change.select2");
+    select.trigger("chosen:updated");
+    field.show();
+  } else {
+    select.empty();
+    select.trigger("change.select2");
+    select.trigger("chosen:updated");
+    field.hide();
+  }
 }
 
-if(jQuery(billing_state).val() != "") {
-    update_select(jQuery(billing_country).val(), jQuery(billing_state).val(), billing_select, billing_field, "")
+/**
+ * Update the billing information section local government field on page load
+ */
+if (jQuery(billingState).val() !== "") {
+  updateSelectField(
+    jQuery(billingCountry).val(),
+    jQuery(billingState).val(),
+    billingSelect,
+    billingField,
+    ""
+  )
 }
 
-if(jQuery(shipping_state).val() != "") {
-    update_select(jQuery(shipping_country).val(), jQuery(shipping_state).val(), shipping_select, shipping_field, "")
+/**
+ * Update the shipping information section local government field on page load
+ */
+if (jQuery(shippingState).val() !== "") {
+  updateSelectField(
+    jQuery(shippingCountry).val(),
+    jQuery(shippingState).val(),
+    shippingSelect,
+    shippingField, ""
+  )
 }
 
-jQuery(billing_state).on("change", function(){
-    var billing_selected_country = jQuery(billing_country).val();
-    var billing_selected_state = jQuery(billing_state).val();
-    update_select(billing_selected_country, billing_selected_state, billing_select, billing_field)
+/**
+ * Update the billing information section local government field when
+ * user select another state
+ */
+jQuery(billingState).on("change", function () {
+  var billingSelectedCountry = jQuery(billingCountry).val();
+  var billingSelectedState = jQuery(billingState).val();
+
+  updateSelectField(
+    billingSelectedCountry,
+    billingSelectedState,
+    billingSelect,
+    billingField
+  )
 });
 
-jQuery("body").on("change", shipping_state, function(){
-    var shipping_selected_country = jQuery(shipping_country).val();
-    var shipping_selected_state = jQuery(shipping_state).val();
-    update_select(shipping_selected_country, shipping_selected_state, shipping_select, shipping_field)
+/**
+ * Update the shipping information section local government field when
+ * user select another state
+ */
+jQuery("body").on("change", shippingState, function () {
+  var shippingSelectedCountry = jQuery(shippingCountry).val();
+  var shippingSelectedState = jQuery(shippingState).val();
+
+  updateSelectField(
+    shippingSelectedCountry,
+    shippingSelectedState, shippingSelect, shippingField)
 });
