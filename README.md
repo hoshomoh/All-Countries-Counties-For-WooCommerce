@@ -85,7 +85,7 @@ Yes you can! Join in on our [GitHub repository](https://github.com/hoshomoh/WooC
 
 == Changelog ==
 = 1.1.1 - 22/05/2018 =
-* Fix - Fix bug with updating logged in user info after checkout
+* Fix - Removed redundant user data update function
 
 = 1.1.0 - 18/09/2017 =
 * Feature - Added filters to override local governments collection in theme function
