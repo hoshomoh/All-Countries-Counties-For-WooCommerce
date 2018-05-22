@@ -4,7 +4,7 @@ Donate link: https://github.com/hoshomoh/WooCommerce-All-Country-States <Just st
 Tags: e-commerce, woocommerce-counties, woocommerce-nigerian-states, woocommerce-uk-provinces, woocommerce-chile-counties, woocommerce-kenya-pronvinces, woocommerce-nigerian-LGA
 Requires at least: 4.1
 Tested up to: 4.8
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -81,9 +81,11 @@ Yes you can! Join in on our [GitHub repository](https://github.com/hoshomoh/WooC
 
 == Screenshots ==
 
-1. The WooCommerce state field converted to a dropdown.
+1. The WooCommerce state field converted to a drop down.
 
 == Changelog ==
+= 1.1.1 - 22/05/2018 =
+* Fix - Fix bug with updating logged in user info after checkout
 
 = 1.1.0 - 18/09/2017 =
 * Feature - Added filters to override local governments collection in theme function
