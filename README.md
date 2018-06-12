@@ -28,24 +28,24 @@ The local government feauture is only available in Nigeria at the moment.
 
 = Overriding local governments in theme function.php
 
-`
+```php
 add_filter( 'wc_add_counties_local_government', 'my_custom_lga' );
 
 function my_custom_lga( $local_governments ) { 
-	my_custom_lga_array = [
+    my_custom_lga_array = [
         '' => __( 'Select an option...' , 'woocommerce' ),
         'Agege/ijaiye' => __( 'Agege/ijaiye', 'woocommerce' ),
         'Ajeromi/ifelodun' => __( 'Ajeromi/ifelodun', 'woocommerce' ),
         'Alimosho' => __( 'Alimosho', 'woocommerce' ),
-        'Amuwo Odofin' => __( 'Amuwo Odofin', 'woocommerce' ),
+	'Amuwo Odofin' => __( 'Amuwo Odofin', 'woocommerce' ),
         'Apapa' => __( 'Apapa', 'woocommerce' ),
     ];
+    
+    $local_governments['NG']['LA'] = my_custom_lga_array;
 
-	$local_governments['NG']['LA'] = my_custom_lga_array;
-
-	return $local_governments;
+    return $local_governments;
 }
-`
+```
 
 == Installation ==
 
