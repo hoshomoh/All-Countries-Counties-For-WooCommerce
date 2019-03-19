@@ -3,8 +3,8 @@ Contributors: hoshomoh, rodmontgt, bosunolanrewaju
 Donate link: https://github.com/hoshomoh/WooCommerce-All-Country-States <Just star the repo>
 Tags: e-commerce, woocommerce-counties, woocommerce-nigerian-states, woocommerce-uk-provinces, woocommerce-chile-counties, woocommerce-kenya-pronvinces, woocommerce-nigerian-LGA
 Requires at least: 4.1
-Tested up to: 4.8
-Stable tag: 1.1.1
+Tested up to: 5.1.1
+Stable tag: 1.1.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -84,6 +84,9 @@ Yes you can! Join in on our [GitHub repository](https://github.com/hoshomoh/WooC
 1. The WooCommerce state field converted to a drop down.
 
 == Changelog ==
+= 1.1.2 - 19/03/2019 =
+* Compatibility - Tested with Wordpress version 5
+
 = 1.1.1 - 22/05/2018 =
 * Fix - Removed redundant user data update function
 
